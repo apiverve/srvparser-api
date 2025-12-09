@@ -1,0 +1,93 @@
+openapi: 3.0.4
+info:
+  title: SRV Record Parser
+  description: SRV Record Parser analyzes DNS SRV records and extracts service location information including priority, weight, port, and target server details.
+  termsOfService: https://apiverve.com/terms/
+  contact:
+    name: APIVerve Support
+    email: hello@apiverve.com
+    url: https://apiverve.com/contact
+  version: 1.0.9
+externalDocs:
+  description: Learn more about APIVerve
+  url: https://docs.apiverve.com?utm_source=openapi
+servers:
+- url: https://api.apiverve.com/
+paths:
+  /v1/srvparser:
+    post:
+      summary: Parse SRV Record
+      description: SRV Record Parser analyzes DNS SRV records and extracts service location information including priority, weight, port, and target server details.
+      operationId: srvparser
+      parameters: []
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: status
+                  error:
+                    type: string
+                    description: error
+                  data:
+                    type: string
+                    description: data
+              example:
+                status: ok
+                error: 
+                data:
+                  raw_record: _http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com.
+                  parsed:
+                    name: _http._tcp.example.com.
+                    service: _http
+                    protocol: tcp
+                    domain: example.com.
+                    ttl: 86400
+                    class: IN
+                    priority: 10
+                    weight: 60
+                    port: 80
+                    target: server.example.com
+                  service_info:
+                    name: HTTP
+                    description: Web service
+                    default_port: 80
+                  interpretation:
+                    priority_explanation: Priority level 10 (lower is better)
+                    weight_explanation: Weight 60 for load balancing
+                    target_explanation: Connect to server.example.com:80
+                  is_valid: true
+        '401':
+          description: Your request was not authorized, or your API Key was invalid
+        '404':
+          description: Requested resource was not found
+        '500':
+          description: A server error has occured, try again later
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                record:
+                  type: string
+                  description: The SRV record string to parse
+                  example: _http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com.
+              required:
+              - record
+              example:
+                record: _http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com.
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+security:
+- api_key: []
