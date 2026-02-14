@@ -12,12 +12,8 @@ public class BasicExample {
         SRVRecordParserAPIClient client = new SRVRecordParserAPIClient("YOUR_API_KEY_HERE");
 
         try {
-            // Request body
-            Map&lt;String, Object&gt; parameters &#x3D; new HashMap&lt;&gt;();
-        parameters.put(&quot;record&quot;, &quot;_http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com.&quot;);
-
-            // Execute the API request
-            APIResponse response = client.execute(parameters);
+            // Execute the API request (no parameters required)
+            APIResponse response = client.execute(null);
 
             // Check if the request was successful
             if (response.isSuccess()) {
