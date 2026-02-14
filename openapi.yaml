@@ -1,23 +1,25 @@
 openapi: 3.0.4
 info:
   title: SRV Record Parser
-  description: SRV Record Parser analyzes DNS SRV records and extracts service location information including priority, weight, port, and target server details.
+  description: >-
+    SRV Record Parser analyzes DNS SRV records and extracts service location
+    information including priority, weight, port, and target server details.
   termsOfService: https://apiverve.com/terms/
   contact:
     name: APIVerve Support
     email: hello@apiverve.com
     url: https://apiverve.com/contact
-  version: 1.0.9
+  version: 1.0.0
 externalDocs:
   description: Learn more about APIVerve
   url: https://docs.apiverve.com?utm_source=openapi
 servers:
-- url: https://api.apiverve.com/
+  - url: https://api.apiverve.com/
 paths:
   /v1/srvparser:
     post:
       summary: Parse SRV Record
-      description: SRV Record Parser analyzes DNS SRV records and extracts service location information including priority, weight, port, and target server details.
+      description: Parse a DNS SRV record and extract service information
       operationId: srvparser
       parameters: []
       responses:
@@ -35,13 +37,15 @@ paths:
                     type: string
                     description: error
                   data:
-                    type: string
+                    type: object
                     description: data
               example:
                 status: ok
-                error: 
+                error: null
                 data:
-                  raw_record: _http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com.
+                  raw_record: >-
+                    _http._tcp.example.com. 86400 IN SRV 10 60 80
+                    server.example.com.
                   parsed:
                     name: _http._tcp.example.com.
                     service: _http
@@ -67,7 +71,7 @@ paths:
         '404':
           description: Requested resource was not found
         '500':
-          description: A server error has occured, try again later
+          description: A server error has occurred, try again later
       requestBody:
         required: true
         content:
@@ -78,11 +82,8 @@ paths:
                 record:
                   type: string
                   description: The SRV record string to parse
-                  example: _http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com.
               required:
-              - record
-              example:
-                record: _http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com.
+                - record
 components:
   securitySchemes:
     api_key:
@@ -90,4 +91,6 @@ components:
       name: x-api-key
       in: header
 security:
-- api_key: []
+  - api_key: []
+sampleRequest:
+  record: _http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com.
