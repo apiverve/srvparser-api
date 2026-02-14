@@ -9,22 +9,15 @@ const API_KEY = process.env.APIVERVE_API_KEY || 'YOUR_API_KEY_HERE';
 const API_URL = 'https://api.apiverve.com/v1/srvparser';
 
 /**
- * Make a POST request to the SRV Record Parser API
+ * Make a GET request to the SRV Record Parser API
  */
 async function callSRVRecordParserAPI() {
   try {
-    // Request body
-    const requestBody &#x3D; {
-    &quot;record&quot;: &quot;_http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com.&quot;
-};
-
     const response = await fetch(API_URL, {
-      method: 'POST',
+      method: 'GET',
       headers: {
-        'x-api-key': API_KEY,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(requestBody)
+        'x-api-key': API_KEY
+      }
     });
 
     // Check if response is successful
