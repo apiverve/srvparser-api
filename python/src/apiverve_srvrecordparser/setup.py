@@ -10,20 +10,14 @@ if os.path.exists(requirements_file):
 
 setup(
     name='apiverve_srvrecordparser',
-    version='1.1.12',
+    version='1.1.13',
     packages=find_packages(),
     include_package_data=True,
     install_requires=install_requires,
     description='SRV Record Parser analyzes DNS SRV records and extracts service location information including priority, weight, port, and target server details.',
     author='APIVerve',
     author_email='hello@apiverve.com',
-    url='https://apiverve.com',
-    project_urls={
-        'Homepage': 'https://apiverve.com',
-        'Documentation': 'https://docs.apiverve.com/ref/srvparser',
-        'Source': 'https://github.com/apiverve/srvparser-api',
-        'Bug Tracker': 'https://github.com/apiverve/srvparser-api/issues'
-    },
+    url='https://apiverve.com/marketplace/srvparser?utm_source=pypi&utm_medium=homepage',
     classifiers=[
         'Programming Language :: Python :: 3',
         'Operating System :: OS Independent',
