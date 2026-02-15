@@ -12,7 +12,6 @@ namespace APIVerve.API.SRVRecordParser
     {
         /// <summary>
         /// The SRV record string to parse
-        /// Example: _http._tcp.example.com. 3600 IN SRV 10 60 80 server.example.com.
         /// </summary>
         [JsonProperty("record")]
         public string Record { get; set; }
