@@ -239,8 +239,9 @@ from apiverve_srvrecordparser.apiClient import SrvparserAPIClient
 
 api = SrvparserAPIClient("[YOUR_API_KEY]")
 
+query = { "record": "_http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com." }
+
 try:
-    query = { "record": "_http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com." }
     result = api.execute(query)
     print(result)
 finally:
