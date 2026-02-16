@@ -1,6 +1,6 @@
 {
   "name": "@apiverve/srvparser",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "SRV Record Parser analyzes DNS SRV records and extracts service location information including priority, weight, port, and target server details.",
   "main": "index.js",
   "types": "index.d.ts",
