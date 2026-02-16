@@ -26,7 +26,7 @@ Add the dependency:
 
 ```gradle
 dependencies {
-    implementation 'com.github.apiverve:srvparser-api:1.1.13'
+    implementation 'com.github.apiverve:srvparser-api:1.1.14'
 }
 ```
 
@@ -47,7 +47,7 @@ SRVRecordParserAPIClient client = new SRVRecordParserAPIClient("YOUR_API_KEY");
 try {
     // Prepare request parameters
     Map<String, Object> parameters = new HashMap<>();
-    parameters.put("record", "_http._tcp.example.com. 3600 IN SRV 10 60 80 server.example.com.");
+    parameters.put("record", "_http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com.");
 
     // Execute the request
     APIResponse response = client.execute(parameters);
