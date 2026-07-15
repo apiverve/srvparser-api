@@ -4,45 +4,57 @@ declare module '@apiverve/srvparser' {
     secure?: boolean;
   }
 
+  /**
+   * Describes fields the current plan does not unlock. Locked fields arrive as null
+   * in `data`; `locked_fields` names them, using dot paths for nested fields.
+   * Absent when the plan unlocks everything.
+   */
+  export interface PremiumInfo {
+    message: string;
+    upgrade_url: string;
+    locked_fields: string[];
+  }
+
   export interface srvparserResponse {
     status: string;
     error: string | null;
     data: SRVRecordParserData;
     code?: number;
+    premium?: PremiumInfo;
   }
 
 
   interface SRVRecordParserData {
-      rawRecord:      string;
+      rawRecord:      null | string;
       parsed:         Parsed;
       serviceInfo:    ServiceInfo;
       interpretation: Interpretation;
-      isValid:        boolean;
+      isValid:        boolean | null;
   }
   
   interface Interpretation {
-      priorityExplanation: string;
-      weightExplanation:   string;
-      targetExplanation:   string;
+      priorityExplanation: null | string;
+      weightExplanation:   null | string;
+      targetExplanation:   null | string;
   }
   
   interface Parsed {
-      name:     string;
-      service:  string;
-      protocol: string;
-      domain:   string;
-      ttl:      number;
-      class:    string;
-      priority: number;
-      weight:   number;
-      port:     number;
-      target:   string;
+      name:     null | string;
+      service:  null | string;
+      protocol: null | string;
+      domain:   null | string;
+      ttl:      number | null;
+      class:    null | string;
+      priority: number | null;
+      weight:   number | null;
+      port:     number | null;
+      target:   null | string;
   }
   
   interface ServiceInfo {
-      name:        string;
-      description: string;
-      defaultPort: number;
+      name:        null | string;
+      description: null | string;
+      defaultPort: number | null;
   }
 
   export default class srvparserWrapper {
