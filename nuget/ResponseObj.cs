@@ -25,6 +25,9 @@ namespace APIVerve.API.SRVRecordParser
 
         [JsonProperty("data")]
         public Data Data { get; set; }
+
+        [JsonProperty("premium")]
+        public Premium Premium { get; set; }
     }
 
     public partial class Data
@@ -42,7 +45,7 @@ namespace APIVerve.API.SRVRecordParser
         public Interpretation Interpretation { get; set; }
 
         [JsonProperty("is_valid")]
-        public bool IsValid { get; set; }
+        public bool? IsValid { get; set; }
     }
 
     public partial class Interpretation
@@ -72,19 +75,19 @@ namespace APIVerve.API.SRVRecordParser
         public string Domain { get; set; }
 
         [JsonProperty("ttl")]
-        public long Ttl { get; set; }
+        public long? Ttl { get; set; }
 
         [JsonProperty("class")]
         public string Class { get; set; }
 
         [JsonProperty("priority")]
-        public long Priority { get; set; }
+        public long? Priority { get; set; }
 
         [JsonProperty("weight")]
-        public long Weight { get; set; }
+        public long? Weight { get; set; }
 
         [JsonProperty("port")]
-        public long Port { get; set; }
+        public long? Port { get; set; }
 
         [JsonProperty("target")]
         public string Target { get; set; }
@@ -99,6 +102,18 @@ namespace APIVerve.API.SRVRecordParser
         public string Description { get; set; }
 
         [JsonProperty("default_port")]
-        public long DefaultPort { get; set; }
+        public long? DefaultPort { get; set; }
+    }
+
+    public partial class Premium
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("upgrade_url")]
+        public Uri UpgradeUrl { get; set; }
+
+        [JsonProperty("locked_fields")]
+        public string[] LockedFields { get; set; }
     }
 }
