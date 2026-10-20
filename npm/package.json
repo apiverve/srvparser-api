@@ -1,6 +1,6 @@
 {
   "name": "@apiverve/srvparser",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "SRV Record Parser analyzes DNS SRV records and extracts service location information including priority, weight, port, and target server details.",
   "main": "index.js",
   "types": "index.d.ts",
@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/apiverve/srvparser-api/issues"
   },
-  "homepage": "https://apiverve.com/marketplace/srvparser?utm_source=npm&utm_medium=homepage",
+  "homepage": "https://apiverve.com/marketplace/srvparser?utm_source=npm&utm_medium=referral&utm_content=homepage",
   "devDependencies": {
     "mocha": "^11.0.1",
     "chai": "^5.1.2",
