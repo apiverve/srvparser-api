@@ -1,13 +1,13 @@
-# [SRV Record Parser API](https://apiverve.com/marketplace/srvparser?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+# [SRV Record Parser API](https://apiverve.com/marketplace/srvparser?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 
 SRV Record Parser analyzes DNS SRV records and extracts service location information including priority, weight, port, and target server details.
 
 The SRV Record Parser API provides a simple, reliable way to integrate srv record parser functionality into your applications. Built for developers who need production-ready srv record parser capabilities without the complexity of building from scratch.
 
-**[View API Details →](https://apiverve.com/marketplace/srvparser?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)**
+**[View API Details →](https://apiverve.com/marketplace/srvparser?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![API Status](https://img.shields.io/badge/Status-Active-green.svg)](https://apiverve.com/marketplace/srvparser?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+[![API Status](https://img.shields.io/badge/Status-Active-green.svg)](https://apiverve.com/marketplace/srvparser?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 [![Method](https://img.shields.io/badge/Method-POST-blue.svg)](#)
 [![Platform](https://img.shields.io/badge/Platform-Multi--Platform-orange.svg)](#installation)
 
@@ -167,7 +167,7 @@ go get github.com/apiverve/srvparser-api/go
 
 ## Documentation
 
-- 🏠 **API Home:** [SRV Record Parser API](https://apiverve.com/marketplace/srvparser?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+- 🏠 **API Home:** [SRV Record Parser API](https://apiverve.com/marketplace/srvparser?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 - 📚 **API Reference:** [docs.apiverve.com/ref/srvparser](https://docs.apiverve.com/ref/srvparser)
 - 📖 **OpenAPI Spec:** [openapi.yaml](./openapi.yaml)
 - 💡 **Examples:** [examples/](./examples/)
@@ -197,11 +197,51 @@ x-api-key: YOUR_API_KEY_HERE
 Get your API key: [https://apiverve.com](https://apiverve.com)
 
 ### Response Format
-All responses are JSON with this structure:
+
+Every APIVerve endpoint returns the same envelope — check `status`, then read `data`:
+
 ```json
 {
   "status": "ok",
+  "error": null,
   "data": { ... }
+}
+```
+
+### Example Response
+
+A real response from the SRV Record Parser API:
+
+```json
+{
+  "status": "ok",
+  "error": null,
+  "data": {
+    "raw_record": "_http._tcp.example.com. 86400 IN SRV 10 60 80 server.example.com.",
+    "parsed": {
+      "name": "_http._tcp.example.com.",
+      "service": "_http",
+      "protocol": "tcp",
+      "domain": "example.com.",
+      "ttl": 86400,
+      "class": "IN",
+      "priority": 10,
+      "weight": 60,
+      "port": 80,
+      "target": "server.example.com"
+    },
+    "service_info": {
+      "name": "HTTP",
+      "description": "Web service",
+      "default_port": 80
+    },
+    "interpretation": {
+      "priority_explanation": "Priority level 10 (lower is better)",
+      "weight_explanation": "Weight 60 for load balancing",
+      "target_explanation": "Connect to server.example.com:80"
+    },
+    "is_valid": true
+  }
 }
 ```
 
@@ -209,7 +249,7 @@ All responses are JSON with this structure:
 
 ## Support & Community
 
-- 🏠 **API Home**: [SRV Record Parser API](https://apiverve.com/marketplace/srvparser?utm_source&#x3D;github&amp;utm_medium&#x3D;readme)
+- 🏠 **API Home**: [SRV Record Parser API](https://apiverve.com/marketplace/srvparser?utm_source&#x3D;github&amp;utm_medium&#x3D;referral&amp;utm_content&#x3D;readme)
 - 💬 **Support**: [https://apiverve.com/contact](https://apiverve.com/contact)
 - 🐛 **Issues**: [GitHub Issues](../../issues)
 - 📖 **Documentation**: [https://docs.apiverve.com](https://docs.apiverve.com)
