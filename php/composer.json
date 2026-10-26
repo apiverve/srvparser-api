@@ -1,7 +1,7 @@
 {
     "name": "apiverve/srvparser",
     "description": "SRV Record Parser analyzes DNS SRV records and extracts service location information including priority, weight, port, and target server details.",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "type": "library",
     "license": "MIT",
     "authors": [
